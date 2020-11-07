@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route} from 'react-router-dom';
 // import {createStructuredSelector} from 'reselect';
 import {connect} from 'react-redux';
@@ -17,30 +17,35 @@ import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
 // const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 // const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-class ShopPage extends React.Component {
-  // state = {
-  //     loading: true,
-  //   }
-  // unsubscribeFromSnapshot = null;
-  componentDidMount() {
-  //   const {updateCollections} = this.props;
-  //   const collectionRef = firestore.collection('collection');
+// class ShopPage extends React.Component {
+//   // state = {
+//   //     loading: true,
+//   //   }
+//   // unsubscribeFromSnapshot = null;
+//   componentDidMount() {
+//   //   const {updateCollections} = this.props;
+//   //   const collectionRef = firestore.collection('collection');
 
-  // // fetch('https://firestore.googleapis.com/v1/projects/clothing-ecommerce-react-c3cf5/databases/(default)/documents/collection')
-  // // .then(response => response.json())
-  // // .then(collections => console.log(collections))
+//   // // fetch('https://firestore.googleapis.com/v1/projects/clothing-ecommerce-react-c3cf5/databases/(default)/documents/collection')
+//   // // .then(response => response.json())
+//   // // .then(collections => console.log(collections))
 
-  // collectionRef.get().then(snapshot => {
-  //     const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-  //     updateCollections(collectionsMap);
-  //     this.setState({loading: false});
-  //   })
-  const { fetchCollectionsStart} = this.props;
-  fetchCollectionsStart();
-  }
-  render(){
-    const {match} = this.props;
-    // const {loading} = this.state;
+//   // collectionRef.get().then(snapshot => {
+//   //     const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+//   //     updateCollections(collectionsMap);
+//   //     this.setState({loading: false});
+//   //   })
+//   const { fetchCollectionsStart} = this.props;
+//   fetchCollectionsStart();
+//   }
+//   render(){
+//     const {match} = this.props;
+//     // const {loading} = this.state;
+
+const ShopPage =({fetchCollectionsStart, match}) =>{
+  useEffect(() =>{
+    fetchCollectionsStart();
+  },[fetchCollectionsStart])
     return(
         <div className='shop-page'>
         <Route
@@ -57,7 +62,7 @@ class ShopPage extends React.Component {
       </div>
     )
   }
-}
+// }
 
 // const mapStateToProps = createStructuredSelector({
 //   // isCollectionFetching: selectIsCollectionFetching,
